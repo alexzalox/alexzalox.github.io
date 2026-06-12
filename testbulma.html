@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alex Chen</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        /* 1. 回歸 W3.CSS 經典純黑背景與 Montserrat 字體 */
+        body {
+            font-family: "Montserrat", sans-serif;
+            background-color: #000000;
+            color: #9e9e9e;
+            /* W3.CSS w3-text-grey */
+            min-height: 100vh;
+        }
+
+        /* W3.CSS 經典深色面板與導覽列 (#222) */
+        .w3-dark-panel {
+            background-color: #222222;
+            border: 1px solid #333333;
+            border-radius: 4px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .navbar.w3-black-nav {
+            background-color: #222222 !important;
+            border-bottom: 1px solid #333333;
+        }
+
+        /* 覆寫文字顏色，保持 W3.CSS 高對比白/灰風格 */
+        .title,
+        .w3-text-light-grey {
+            color: #f1f1f1 !important;
+        }
+
+        .subtitle,
+        .content h1,
+        .content h2,
+        .content h3,
+        .content h4 {
+            color: #ffffff !important;
+        }
+
+        .content strong {
+            color: #ffffff;
+        }
+
+        hr {
+            background-color: rgba(255, 255, 255, 0.2);
+            height: 1px;
+            margin: 1.5rem 0;
+        }
+
+        /* Bulma 選單自訂暗色適應 */
+        .navbar-item,
+        .navbar-link {
+            color: #9e9e9e !important;
+        }
+
+        .navbar-item:hover,
+        .navbar-link:hover,
+        .navbar-item.is-active {
+            background-color: #000000 !important;
+            color: #ffffff !important;
+        }
+
+        /* 3. 完美響應式影片與圖片 wrapper */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 高寬比 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* 桌面版左側固定側邊欄效果 */
+        @media screen and (min-width: 769px) {
+            .sticky-sidebar {
+                position: sticky;
+                top: 80px;
+            }
+        }
+
+        /* 證書圖片間距與排版 */
+        .cert-grid img {
+            width: 100%;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        /* Experience 區塊 Bulma-style Timeline 樣式 */
+        .timeline-container {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+            border-left: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .timeline-item.is-last {
+            border-left: none;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background-color: #48c774;
+            /* Bulma Success Green */
+            border-radius: 50%;
+            border: 3px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-content {
+            padding-left: 25px;
+        }
+
+        .timeline-content h5 {
+            margin-top: -5px;
+        }
+    </style>
+</head>
+
+<body class="has-navbar-fixed-top">
+
+    <nav class="navbar is-fixed-top w3-black-nav" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item has-text-white has-text-weight-bold" href="#">
+                    ALEX CHEN
+                </a>
+                <a role="button" class="navbar-burger has-text-white" aria-label="menu" aria-expanded="false"
+                    data-target="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a href="#home" class="navbar-item">HOME</a>
+                    <a href="#projects" class="navbar-item">PROJECTS</a>
+                    <a href="#experience" class="navbar-item">WORK EXPERIENCE</a>
+                    <a href="#certificates" class="navbar-item">CERTIFICATES</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container">
+            <div class="columns is-variable is-5">
+
+                <div class="column is-4">
+                    <div class="w3-dark-panel sticky-sidebar has-text-centered">
+                        <figure class="image is-square mb-4">
+                            <img src="./images/me6.jpg" alt="Alex Chen" style="object-fit: cover;">
+                        </figure>
+                        <h1 class="title is-3 mb-2">Alex Chen</h1>
+                        <p class="has-text-grey-light mb-4">AI Engineer, Big Data Engineer, and Data Scientist</p>
+
+                        <div class="content has-text-left mt-5">
+                            <p class="w3-wide mb-1" style="letter-spacing: 2px; font-size: 0.85rem;">STATISTICS</p>
+                            <progress class="progress is-dark is-small mb-3" value="95" max="100"></progress>
+
+                            <p class="w3-wide mb-1" style="letter-spacing: 2px; font-size: 0.85rem;">ARTIFICIAL
+                                INTELLIGENCE</p>
+                            <progress class="progress is-dark is-small mb-3" value="85" max="100"></progress>
+
+                            <p class="w3-wide mb-1" style="letter-spacing: 2px; font-size: 0.85rem;">WEB DESIGN</p>
+                            <progress class="progress is-dark is-small mb-4" value="80" max="100"></progress>
+                        </div>
+
+                        <div class="columns is-mobile is-multiline has-background-black has-text-white py-3 my-3"
+                            style="border: 1px solid #333;">
+                            <div class="column is-6 mb-2">
+                                <span class="is-size-4 has-text-weight-bold">5+</span><br><span
+                                    class="is-size-7 has-text-grey">Partners</span>
+                            </div>
+                            <div class="column is-6 mb-2">
+                                <span class="is-size-4 has-text-weight-bold">25+</span><br><span
+                                    class="is-size-7 has-text-grey">Projects Done</span>
+                            </div>
+                            <div class="column is-6">
+                                <span class="is-size-4 has-text-weight-bold">30+</span><br><span
+                                    class="is-size-7 has-text-grey">Happy Clients</span>
+                            </div>
+                            <div class="column is-6">
+                                <span class="is-size-4 has-text-weight-bold">200+</span><br><span
+                                    class="is-size-7 has-text-grey">Meetings</span>
+                            </div>
+                        </div>
+
+                        <button class="button is-light is-fullwidth mb-2"
+                            onclick="window.open('https://github.com/alexzalox', '_blank')">
+                            <span class="icon"><i class="fa fa-github"></i></span>
+                            <span>GitHub</span>
+                        </button>
+                        <button class="button is-light is-fullwidth">
+                            <span class="icon"><i class="fa fa-download"></i></span>
+                            <span>Download Resume</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="column is-8">
+
+                    <div id="home" class="w3-dark-panel">
+                        <div class="content">
+                            <h2 class="w3-text-light-grey title is-3">About Me</h2>
+                            <hr style="width:200px" class="w3-opacity">
+                            <p>
+                                您好，我是 Alex Chen，一名專注於人工智慧與巨量資料工程的<strong>資深獨立顧問（SOHO
+                                    專業人士）</strong>。我擅長利用先進的數據科學技術與高效的模型部署流程，協助企業將未經雕琢的原始數據轉化為強大的商業決策利器。
+                            </p>
+                            <p>
+                                我具備深厚的<strong>機器學習模型建置與架構微調能力</strong>，在處理大規模數據遷移專案方面擁有卓越的實戰經驗。我曾透過精心設計的 Python
+                                多執行緒（Multi-threading）並行處理技術，<strong>高效完成超過 80 萬筆歌曲紀錄從 Oracle 到 MariaDB
+                                    的跨資料庫系統無縫遷移</strong>，將原本漫長的轉移耗時縮減至極致。我熱衷於攻克各種高難度的資料工程瓶頸，不論是地端系統重構還是雲端 AI
+                                部署，皆能提供最具生產力的解決方案。
+                            </p>
+
+                            <h3 class="w3-text-light-grey title is-4 mt-6">My Reputation</h3>
+                            <hr style="width:200px" class="w3-opacity">
+                            <div class="mb-5">
+                                <img src="images\SUMIKA_logo.jpg" alt="Avatar" class="is-rounded mb-2"
+                                    style="width:106px; height:64px; object-fit:cover; float: left; margin-right: 15px;">
+                                <p>
+                                    <span class="has-text-white has-text-weight-bold is-size-5">Norman Chen</span>
+                                    <br><span class="is-size-7 has-text-grey-light">Manufacturing Process Engineer at
+                                        Sumika Technology Co., Ltd.</span>
+                                </p>
+                                <p class="mt-2" style="clear:both;">
+                                    "Alex Chen's advice is very practical and he provides solutions to almost every
+                                    question. He has a good statistical background in data and can explain his
+                                    suggestions and solutions in a very easy-to-understand way. You will definitely not
+                                    come back empty-handed after asking him. He is an excellent expert."
+                                </p>
+                            </div>
+
+                            <div class="mt-5">
+                                <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="image is-64x64 is-rounded mb-2"
+                                    style="float: left; margin-right: 15px;">
+                                <p>
+                                    <span class="has-text-white has-text-weight-bold is-size-5">Rebecca Flex.</span>
+                                    <br><span class="is-size-7 has-text-grey-light">CEO at Company.</span>
+                                </p>
+                                <p class="mt-2" style="clear:both;">
+                                    "No one is better than John Doe."
+                                </p>
+                            </div>
+
+                            <h3 class="w3-text-light-grey title is-4 mt-6">My Price</h3>
+                            <hr style="width:200px" class="w3-opacity">
+                            <div class="columns is-multiline">
+                                <div class="column is-12-mobile is-6-tablet">
+                                    <div class="has-background-black p-5 has-text-centered"
+                                        style="border: 1px solid #333;">
+                                        <div
+                                            class="has-background-dark py-4 is-size-4 has-text-white has-text-weight-bold mb-3">
+                                            Basic</div>
+                                        <p class="py-2" style="border-bottom: 1px solid #222;">Web Design</p>
+                                        <p class="py-2" style="border-bottom: 1px solid #222;">Data Analysis</p>
+                                        <p class="py-2" style="border-bottom: 1px solid #222;">Mail Support</p>
+                                        <p class="py-2 mb-4" style="border-bottom: 1px solid #222;">Machine Learning</p>
+                                        <h2 class="subtitle is-3 mb-4">$ normal <br><span
+                                                class="is-size-7 has-text-grey">per month</span></h2>
+                                        <button class="button is-light">Sign Up</button>
+                                    </div>
+                                </div>
+                                <div class="column is-12-mobile is-6-tablet">
+                                    <div class="has-background-black p-5 has-text-centered"
+                                        style="border: 1px solid #333;">
+                                        <div
+                                            class="has-background-dark py-4 is-size-4 has-text-white has-text-weight-bold mb-3">
+                                            Pro</div>
+                                        <p class="py-2" style="border-bottom: 1px solid #222;">Statistical Consulting
+                                        </p>
+                                        <p class="py-2" style="border-bottom: 1px solid #222;">Business Analysis</p>
+                                        <p class="py-2" style="border-bottom: 1px solid #222;">Endless Support</p>
+                                        <p class="py-2 mb-4" style="border-bottom: 1px solid #222;">AI Fine Tuning</p>
+                                        <h2 class="subtitle is-3 mb-4">$ higher <br><span
+                                                class="is-size-7 has-text-grey">per month</span></h2>
+                                        <button class="button is-light">Sign Up</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="w3-text-light-grey title is-4 mt-6">Contact Me</h3>
+                            <hr style="width:200px" class="w3-opacity">
+                            <p><i class="fa fa-map-marker fa-fw has-text-white is-size-4 mr-3"></i> Hsinchu, TW</p>
+                            <p><i class="fa fa-envelope fa-fw has-text-white is-size-4 mr-3"></i> Email:
+                                alexzalox@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div id="projects" class="w3-dark-panel">
+                        <div class="content">
+                            <h2 class="w3-text-light-grey title is-3">Featured Projects</h2>
+                            <hr style="width:200px" class="w3-opacity">
+
+                            <div class="has-background-black p-4 mb-4" style="border: 1px solid #333;">
+                                <h4 class="title is-5 mb-2">"Second Coach: Your New Best Asset to Your Team".
+                                    棒球智慧教練-決策輔助系統</h4>
+                                <p class="mb-2 has-text-white has-text-weight-semibold">What can our system do?</p>
+                                <ul class="mt-1" style="list-style-type: square; margin-left: 20px;">
+                                    <li>Shift recommendations.</li>
+                                    <li>Hitter swing prediction.</li>
+                                    <li>Zone prediction：PitchFX zone number. Labeled as 1-9 for inside strikezone and
+                                        11-14 for outside strikezone. There is no 10. (from a pitcher's perspective).
+                                    </li>
+                                    <li>Pitch-type prediction.</li>
+                                </ul>
+                            </div>
+
+                            <div class="has-background-black p-4 mb-4" style="border: 1px solid #333;">
+                                <h4 class="title is-5 mb-2">Mobile phone number Numerology western-divination network
+                                </h4>
+                                <p class="mb-2">Designed a website on github with html, w3school​, javascript, jupyter.
+                                </p>
+                                <p>Website: <a href="https://alexzalox.github.io/luckyphone/" target="_blank"
+                                        class="has-text-white"
+                                        style="text-decoration: underline;">https://alexzalox.github.io/luckyphone/</a>
+                                </p>
+                            </div>
+
+                            <div class="has-background-black p-4" style="border: 1px solid #333;">
+                                <h4 class="title is-5 mb-2">Pokémon PvP Tournament Wheel Application</h4>
+                                <p>基於 Python 開發並發布於 GitHub 的開源項目（PvPokemon_wheel.py），專為精靈寶可夢 PvP
+                                    社群設計的競賽輪盤。整合了特定錦標賽的核心規則，解決賽程隨機抽籤與規則管理的實用工具。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="experience" class="glass-panel">
+                        <div class="content">
+                            <h2 class="title is-3 has-text-white mb-6">
+                                <i class="fa fa-suitcase fa-fw mr-2 has-text-success"></i>Work Experience
+                            </h2>
+
+                            <div class="timeline-container">
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h5 class="title is-4 has-text-white mb-1">Data Engineer / Rock Mobile
+                                            Corporation</h5>
+                                        <h6 class="subtitle is-6 has-text-success mb-3"><i
+                                                class="fa fa-calendar fa-fw mr-1"></i>Feb 2023 - Present</h6>
+                                        <ul class="mb-4">
+                                            <li>Fetched or corrected stream data and royalty data from music streaming
+                                                platforms (Spotify, Apple Music, YouTube Music, Amazon Music, KKbox) to
+                                                create reports based on customer requirements.</li>
+                                            <li>Migrated 800,000 song data, 150,000 album data, and 3,000
+                                                customer/contract data from Oracle to MariaDB.</li>
+                                            <li>Collaborated with copyright department to improve database field
+                                                definitions and inter-table relationships.</li>
+                                            <li>Designed system data lakehouse architecture (Python, SQL, AWS: Appflow,
+                                                Redshift, Cloud 9, SageMaker, Redis) for real-time streaming, sales
+                                                analysis dashboards, AI sound production Mfit, and AI music genre
+                                                classification.</li>
+                                            <li>Worked with 2 front-end and 3 back-end engineers for system
+                                                troubleshooting and statistical consulting.</li>
+                                            <li>Imported 80 million+ records (60GB) of contract licensing regional data
+                                                using multi-threading, reducing migration time from 10 days to 2.5
+                                                hours.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h5 class="title is-4 has-text-white mb-1">Freelancer</h5>
+                                        <h6 class="subtitle is-6 has-text-success mb-3"><i
+                                                class="fa fa-calendar fa-fw mr-1"></i>Nov 2021 - Feb 2023</h6>
+                                        <ul class="mb-2">
+                                            <li><strong>AI Baseball Coach Project - Team Leader</strong></li>
+                                            <ul class="mb-2" style="list-style-type: circle; margin-left: 20px;">
+                                                <li>Demonstrated Leadership in project management and task management
+                                                    with Scrum.</li>
+                                                <li>Data analysis to identify valuable information from 2.7 million
+                                                    records.</li>
+                                                <li>Big data storage on Apache Hadoop to save millions of data.</li>
+                                                <li>Achieved 86% precision on the prediction of baseball pitch for pitch
+                                                    types and locations.</li>
+                                                <li>Real-time data visualization with Python, Java and MySQL.</li>
+                                            </ul>
+                                            <li><strong>Real-time data visualization on PM2.5 (Taiwan) -
+                                                    Developer</strong></li>
+                                            <ul class="mb-2" style="list-style-type: circle; margin-left: 20px;">
+                                                <li>Success on helping people understand risk of PM2.5.</li>
+                                                <li>Data visualization for PM2.5 concentration within 0.5 second
+                                                    latency.</li>
+                                            </ul>
+                                            <li><strong>Licence Plate Recognition Project - Developer</strong></li>
+                                            <ul class="mb-4" style="list-style-type: circle; margin-left: 20px;">
+                                                <li>Decreased 60% waiting time in parking lots by providing
+                                                    high-throughput and high-accuracy licence plate recognition.</li>
+                                            </ul>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h5 class="title is-4 has-text-white mb-1">Research Assistant / Ministry of
+                                            Education, ROC (Taiwan)</h5>
+                                        <h6 class="subtitle is-6 has-text-success mb-3"><i
+                                                class="fa fa-calendar fa-fw mr-1"></i>Apr 2020 - Nov 2020</h6>
+                                        <ul class="mb-4">
+                                            <li>The industry master class reviews enrollment and other related matters.
+                                            </li>
+                                            <li>Audit project of m.o.e. about aboard students back to Taiwan due to
+                                                Covid-19.</li>
+                                            <li>Industry-University Cooperation Plan Special Class Review, Enrollment
+                                                Regulations Approval, Fund Appropriation and Write-off.</li>
+                                            <li>Subsidy operations for the technical excellence pilot program.</li>
+                                            <li>Aboriginal technical and vocational education related business.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h5 class="title is-4 has-text-white mb-1">Research Assistant / National Taiwan
+                                            Normal University</h5>
+                                        <h6 class="subtitle is-6 has-text-success mb-3"><i
+                                                class="fa fa-calendar fa-fw mr-1"></i>Jul 2017 - Sep 2019</h6>
+                                        <ul class="mb-4">
+                                            <li>Web Site Link: <a href="http://dacctest.net/" target="_blank"
+                                                    class="has-text-info">DACC</a>
+                                                <ul style="list-style-type: circle; margin-left: 20px;">
+                                                    <li>Collect data of Diagnostic Assessment of Chinese Competence
+                                                        (DACC) from elementary school to university.</li>
+                                                    <li>Manage the back-end of DACC system.</li>
+                                                </ul>
+                                            </li>
+                                            <li>Web Site Link: <a href="https://smartreading.net/Home.aspx?Lang=en-US"
+                                                    target="_blank" class="has-text-info">SmartReading</a>
+                                                <ul style="list-style-type: circle; margin-left: 20px;">
+                                                    <li>Proposition research and development project progress control,
+                                                        Text proofreading, Question database management.</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h5 class="title is-4 has-text-white mb-1">Quality Assurance Engineer / Gamesofa
+                                            Inc.</h5>
+                                        <h6 class="subtitle is-6 has-text-success mb-3"><i
+                                                class="fa fa-calendar fa-fw mr-1"></i>Nov 2016 - Jun 2017</h6>
+                                        <ul class="mb-4">
+                                            <li>Familiar with 【Web/Mobile】: Mahjong games (Shen Lai Ye, 13, Two Player),
+                                                Poker (Texas Hold'em, Big Old 2, Solitaire, Fighting Landlord), Shooting
+                                                games.</li>
+                                            <li>Product activities and testing on various platforms, bug hunting, and
+                                                confirming problem recurrence.</li>
+                                            <li>Write bug/suggestion reports, coordinate with departments for
+                                                modification, and continuous verification.</li>
+                                            <li>Collect market game data and support other department project needs.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item is-last">
+                                    <div class="timeline-marker"></div>
+                                    <div class="timeline-content">
+                                        <h5 class="title is-4 has-text-white mb-1">Project Manager, Librarian / Eslite
+                                        </h5>
+                                        <h6 class="subtitle is-6 has-text-success mb-3"><i
+                                                class="fa fa-calendar fa-fw mr-1"></i>Mar 2015 - May 2016</h6>
+                                        <ul class="mb-4">
+                                            <li>Planning activities execution:
+                                                <ul style="list-style-type: circle; margin-left: 20px;">
+                                                    <li>Self-curated book exhibition on Mid-Autumn Festival (中秋個人自策展)
+                                                    </li>
+                                                    <li>Old School Life Proposal Book Fair (老派生活提案展)</li>
+                                                    <li>Shakespeare 400th Anniversary Book Fair (莎士比亞400周年紀念書展)</li>
+                                                    <li>Eslite Book Fair 2015 TOP100 Book Fair (誠品2015年度TOP100書展)</li>
+                                                    <li>Eslite Xinyi Forum personal self-curated book exhibition:
+                                                        Welcome to House of Novels (誠品信義Forum個人自策書展:歡迎來到小說家)</li>
+                                                </ul>
+                                            </li>
+                                            <li>Responsible for the operation of commodities and library area.</li>
+                                            <li>Adjustment of the combination of goods, inventory management, and
+                                                performance evaluation.</li>
+                                            <li>Concerned about cultural trends, with sales creativity and goal
+                                                attempts.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div id="certificates" class="w3-dark-panel">
+                        <div class="content">
+                            <h2 class="w3-text-light-grey title is-3">My Certificates</h2>
+                            <hr style="width:200px" class="w3-opacity">
+
+                            <div class="columns is-multiline is-mobile cert-grid">
+                                <div class="column is-12-mobile is-6-tablet">
+                                    <a href="https://www.spaceappschallenge.org/2023/find-a-team/alex-is-an-alien/?tab=project"
+                                        target="_blank">
+                                        <img src="./images/nasa.jpg" alt="找不到圖片">
+                                    </a>
+                                    <a href="https://credentials.databricks.com/447d06f3-57a3-4069-ada2-0586bfc91403#gs.e0ahs6"
+                                        target="_blank">
+                                        <img src="./images/genai.jpg" alt="找不到圖片">
+                                    </a>
+                                    <img src="./images/Certificate of Completion Google Cloud.jpg"
+                                        alt="Google Cloud Certificate">
+                                </div>
+
+                                <div class="column is-12-mobile is-6-tablet">
+                                    <a href="https://www.credly.com/badges/66e6ba79-d954-4a06-8f91-c596bb49c042"
+                                        target="_blank">
+                                        <img src="./images/mta1.jpg" alt="找不到圖片">
+                                    </a>
+                                    <img src="./images/tqc1.jpg" alt="TQC 證書">
+                                    <a href="https://edu.google.accredible.com/c50a787c-5b51-47f9-858f-cb43d1325117"
+                                        target="_blank">
+                                        <img src="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/161062553"
+                                            alt="找不到圖片">
+                                    </a>
+
+                                    <a href="https://www.credly.com/badges/44dcd8e3-6567-4cfd-982e-9848d46abefa/public_url"
+                                        target="_blank">
+                                        <div data-iframe-width="485" data-iframe-height="500"
+                                            data-share-badge-id="44dcd8e3-6567-4cfd-982e-9848d46abefa"
+                                            data-share-badge-host="https://www.credly.com"></div>
+                                        <script type="text/javascript" async
+                                            src="//cdn.credly.com/assets/utilities/embed.js"></script>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer has-background-black has-text-centered"
+        style="border-top: 1px solid #333; padding: 4rem 1.5rem;">
+        <div class="content has-text-grey">
+            <div class="is-size-4 mb-3">
+                <a href="https://github.com/alexzalox" target="_blank" class="has-text-grey mx-2"><i
+                        class="fa fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/yu-yo-chen-251666102/" target="_blank"
+                    class="has-text-grey mx-2"><i class="fa fa-linkedin"></i></a>
+                <i class="fa fa-facebook-official mx-2"></i>
+                <i class="fa fa-instagram mx-2"></i>
+                <i class="fa fa-twitter mx-2"></i>
+                <i class="fa fa-flickr mx-2"></i>
+            </div>
+            <p class="is-size-7">Powered by <a href="https://bulma.io" target="_blank" class="has-text-white"
+                    style="text-decoration: underline;">Bulma</a>. Styled with W3.CSS Aesthetics.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+
+                        if ($target.classList.contains('is-active')) {
+                            $target.style.backgroundColor = "#222222";
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

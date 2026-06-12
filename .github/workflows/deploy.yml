@@ -1,0 +1,26 @@
+name: Deploy to Public Repo
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # 允許你手動點擊按鈕測試
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Push to Public Repository
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          # 這裡對應我們剛剛建立的全新 Secret 名字
+          API_TOKEN_GITHUB: ${{ secrets.DEPLOY_PAT }}
+        with:
+          source-directory: '.' 
+          destination-github-username: 'alexzalox'
+          destination-repository-name: 'alexzalox.github.io-public'
+          user-email: 'alexzalox@github.com' # 系統用信箱，可隨意
+          target-branch: 'main'
+          create-target-branch-if-needed: true

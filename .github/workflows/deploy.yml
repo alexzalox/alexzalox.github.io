@@ -23,6 +23,6 @@ jobs:
           destination-github-username: "alexzalox"
           # 注意這裡：目標已經改名成這個了
           destination-repository-name: "alexzalox.github.io" 
-          user-email: "alexzalox@users.noreply.github.com"
+          user-email: "alexzalox@gmail.com"
           target-branch: "main"
           create-target-branch-if-needed: true

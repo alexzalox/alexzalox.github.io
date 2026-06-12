@@ -3,7 +3,6 @@ name: Deploy to GitHub Pages Repo
 on:
   push:
     branches: ["main"]
-  workflow_dispatch:
 
 jobs:
   deploy:
@@ -13,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Deploy to public repo
+      - name: Push to public repo
         uses: cpina/github-action-push-to-another-repository@v1.7.3
         env:
           API_TOKEN_GITHUB: ${{ secrets.PAGES_TOKEN }}
